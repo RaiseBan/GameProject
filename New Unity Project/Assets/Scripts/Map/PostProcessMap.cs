@@ -354,7 +354,7 @@ public class PostProcessMap : MonoBehaviour
     // 6 7 8
 
     //1 wall 1 corner
-    if (tiles[0].name == "grass_light" && tiles[3].name == "grass_light" && tiles[6].name == "grass_light" && tiles[8].name == "grass_light" && tiles[1].name == "water_light" && tiles[5].name == "water_light" && tiles[2].name == "water_light" && tiles[8].name == "water_light")
+    if (tiles[3].name == "grass_light" && tiles[8].name == "grass_light" && tiles[1].name == "water_light" && tiles[5].name == "water_light" && tiles[2].name == "water_light" && tiles[8].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
@@ -362,7 +362,7 @@ public class PostProcessMap : MonoBehaviour
     }
 
 
-    if (tiles[2].name == "grass_light" && tiles[5].name == "grass_light" && tiles[8].name == "grass_light" && tiles[6].name == "grass_light" && tiles[0].name == "water_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[7].name == "water_light")
+    if (tiles[5].name == "grass_light" && tiles[6].name == "grass_light" && tiles[0].name == "water_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[7].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
@@ -370,7 +370,7 @@ public class PostProcessMap : MonoBehaviour
     }
 
 
-    if (tiles[0].name == "grass_light" && tiles[1].name == "grass_light" && tiles[2].name == "grass_light" && tiles[8].name == "grass_light" && tiles[3].name == "water_light" && tiles[6].name == "water_light" && tiles[7].name == "water_light" && tiles[5].name == "water_light")
+    if (tiles[1].name == "grass_light" && tiles[8].name == "grass_light" && tiles[3].name == "water_light" && tiles[6].name == "water_light" && tiles[7].name == "water_light" && tiles[5].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
@@ -378,7 +378,7 @@ public class PostProcessMap : MonoBehaviour
     }
 
 
-    if (tiles[0].name == "grass_light" && tiles[1].name == "grass_light" && tiles[2].name == "grass_light" && tiles[6].name == "grass_light" && tiles[3].name == "water_light" && tiles[5].name == "water_light" && tiles[7].name == "water_light" && tiles[8].name == "water_light")
+    if (tiles[1].name == "grass_light" && tiles[6].name == "grass_light" && tiles[3].name == "water_light" && tiles[5].name == "water_light" && tiles[7].name == "water_light" && tiles[8].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
@@ -386,7 +386,7 @@ public class PostProcessMap : MonoBehaviour
     }
 
 
-    if (tiles[0].name == "grass_light" && tiles[3].name == "grass_light" && tiles[6].name == "grass_light" && tiles[2].name == "grass_light" && tiles[1].name == "water_light" && tiles[5].name == "water_light" && tiles[7].name == "water_light" && tiles[8].name == "water_light")
+    if (tiles[3].name == "grass_light" && tiles[2].name == "grass_light" && tiles[1].name == "water_light" && tiles[5].name == "water_light" && tiles[7].name == "water_light" && tiles[8].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
@@ -394,7 +394,7 @@ public class PostProcessMap : MonoBehaviour
     }
 
 
-    if (tiles[2].name == "grass_light" && tiles[5].name == "grass_light" && tiles[8].name == "grass_light" && tiles[0].name == "grass_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[7].name == "water_light" && tiles[6].name == "water_light")
+    if (tiles[5].name == "grass_light" && tiles[0].name == "grass_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[7].name == "water_light" && tiles[6].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
@@ -402,7 +402,7 @@ public class PostProcessMap : MonoBehaviour
     }
 
 
-    if (tiles[2].name == "grass_light" && tiles[6].name == "grass_light" && tiles[8].name == "grass_light" && tiles[7].name == "grass_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[0].name == "water_light" && tiles[5].name == "water_light")
+    if (tiles[2].name == "grass_light" && tiles[7].name == "grass_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[0].name == "water_light" && tiles[5].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
@@ -410,7 +410,7 @@ public class PostProcessMap : MonoBehaviour
     }
 
 
-    if (tiles[7].name == "grass_light" && tiles[6].name == "grass_light" && tiles[8].name == "grass_light" && tiles[0].name == "grass_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[2].name == "water_light" && tiles[5].name == "water_light")
+    if (tiles[6].name == "grass_light" && tiles[0].name == "grass_light" && tiles[1].name == "water_light" && tiles[3].name == "water_light" && tiles[2].name == "water_light" && tiles[5].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
