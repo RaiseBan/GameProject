@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class InventoryVisual : MonoBehaviour
 {
-    public GameObject UIPanel;
+    public GameObject UIBG;
     public Transform inventoryPanel;
 	public List<InventorySlot> slots = new List<InventorySlot>();
     public bool isOpened = false;
+    public Transform quickslotPanel;
     public GameObject Player;
     public bool canTake;
     public int cantTake;
 
     private void Awake()
     {
-        UIPanel.SetActive(true);
+        UIBG.SetActive(true);
     }
 
     void Start()
     {
-        for (int i = 0; i < inventoryPanel.childCount; i++)
-		{
-            if (inventoryPanel.GetChild(i).GetComponent<InventorySlot>() != null)
+        slots.AddRange(inventoryPanel.GetComponentsInChildren<InventorySlot>());
+        for (int i = 0; i < quickslotPanel.childCount; i++)
+        {
+            if (quickslotPanel.GetChild(i).GetComponent<InventorySlot>() != null)
             {
-                slots.Add(inventoryPanel.GetChild(i).GetComponent<InventorySlot>());
+                slots.Add(quickslotPanel.GetChild(i).GetComponent<InventorySlot>());
             }
-		}
-        UIPanel.SetActive(false);
+        }
+        UIBG.SetActive(false);
         inventoryPanel.gameObject.SetActive(false);
     }
 
@@ -38,12 +40,12 @@ public class InventoryVisual : MonoBehaviour
             isOpened = !isOpened;
             if (isOpened)
             {
-                UIPanel.SetActive(true);
+                UIBG.SetActive(true);
                 inventoryPanel.gameObject.SetActive(true);
             }
             else
             {
-                UIPanel.SetActive(false);
+                UIBG.SetActive(false);
                 inventoryPanel.gameObject.SetActive(false);
             }
         }

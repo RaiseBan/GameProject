@@ -18,4 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 04e32f981bdeb8343b56a0190a8bd4dc, type: 3}
   maxAmount: 4
   itemDescription: 
-  healByItem: 0
+  isConsumeable: 1
+  changeHealth: 15
+  changeHunger: 0
+  changeThirst: 0

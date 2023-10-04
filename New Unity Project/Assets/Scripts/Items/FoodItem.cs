@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Food Item", menuName = "Inventory/Items/New Food Item")]
 public class FoodItem : ItemData
 {
-    public float healByItem;
+    
 
     private void Start()
     {
