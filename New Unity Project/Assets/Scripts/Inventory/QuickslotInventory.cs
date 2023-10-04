@@ -92,7 +92,6 @@ public class QuickslotInventory : MonoBehaviour
                 if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.isConsumeable && !inventoryVisual.isOpened && quickslotParent.GetChild(currentQuickslotID).GetComponent<Image>().sprite == selectedSprite)
                 {
                     // Применяем изменения к здоровью (будущем к голоду и жажде) 
-                    ChangeCharacteristics();
 
                     if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().amount <= 1)
                     {
@@ -108,18 +107,5 @@ public class QuickslotInventory : MonoBehaviour
         }
     }
 
-    private void ChangeCharacteristics()
-    {
-        // Если здоровье + добавленное здоровье от предмета меньше или равно 100, то делаем вычисления... 
-        if(int.Parse(healthText.text) + quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.changeHealth <= 100)
-        {
-            float newHealth = int.Parse(healthText.text) + quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.changeHealth;
-            healthText.text = newHealth.ToString();
-        }
-        // Иначе, просто ставим здоровье на 100
-        else
-        {
-            healthText.text = "100";
-        }
-    }
+    
 }

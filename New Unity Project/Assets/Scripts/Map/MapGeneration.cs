@@ -90,7 +90,7 @@ public class MapGeneration : MonoBehaviour
                 Mathf.Abs(chunkPosition.y - playerChunkPosition.y) > distanceThreshold)
             {
                 chunksToRemove.Add(chunkPosition);
-                natureTilemapManager.RemoveNatureTiles(chunkPosition);
+                natureTilemapManager.RemoveNatureTrees(chunkPosition);
             }
         }
 
@@ -133,14 +133,14 @@ public class MapGeneration : MonoBehaviour
                 {
                     currentChunks.Add(chunkPosition);
                     GenerateChunk(chunkPosition.x * chunkSize, chunkPosition.y * chunkSize, chunkSize, chunkSize);
-                    natureTilemapManager.GenerateNatureTiles(chunkPosition, chunkSize);
-                    if (natureTilemapManager.getSavedNatureChunks().ContainsKey(chunkPosition))
+                    natureTilemapManager.GenerateNatureTrees(chunkPosition, chunkSize);
+                    if (natureTilemapManager.getSavedNatureTrees().ContainsKey(chunkPosition))
                     {
-                        natureTilemapManager.RestoreNatureTiles(chunkPosition);
+                        natureTilemapManager.RestoreNatureTrees(chunkPosition);
                     }
                     else
                     {
-                        natureTilemapManager.GenerateNatureTiles(chunkPosition, chunkSize);
+                        natureTilemapManager.GenerateNatureTrees(chunkPosition, chunkSize);
                     }
                 }
             }

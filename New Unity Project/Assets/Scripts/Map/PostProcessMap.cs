@@ -354,7 +354,7 @@ public class PostProcessMap : MonoBehaviour
     // 6 7 8
 
     //1 wall 1 corner
-    if (tiles[3].name == "grass_light" && tiles[8].name == "grass_light" && tiles[1].name == "water_light" && tiles[5].name == "water_light" && tiles[2].name == "water_light" && tiles[8].name == "water_light")
+    if (tiles[3].name == "grass_light" && tiles[8].name == "grass_light" && tiles[1].name == "water_light" && tiles[5].name == "water_light" && tiles[2].name == "water_light" && tiles[7].name == "water_light")
     {
 
         // top-right-bottom-rightTopAngle
