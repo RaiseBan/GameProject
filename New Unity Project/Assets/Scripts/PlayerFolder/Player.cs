@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Item>())
+        if (collision.gameObject.GetComponent<Item>())
         {
             if (collision.gameObject.GetComponent<Item>().item != null)
             {
@@ -59,11 +59,11 @@ public class Player : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<Item>().amount = inventory.cantTake;
                 }
-                
+
             }
         }
 
-
+    }
     private void PlaceTile(Tile tile, Vector3Int position)
     {
         objectTilemap.SetTile(position, tile);
