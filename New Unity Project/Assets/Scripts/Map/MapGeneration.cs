@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
+using Map;
 using UnityEngine;
 using UnityEngine.Tilemaps;  // <-- Не забудьте про это
 
 public class MapGeneration : MonoBehaviour
 {
-    
     public GameObject player;
+    public NatureTilemapManager natureTilemapManager;
     public Tilemap tilemap; // <-- Добавлен Tilemap
     public Tile[] tiles; // <-- Массив тайлов
     public event Action<Vector2Int, Dictionary<Vector2Int, Tile>, Dictionary<Vector2Int, Tile>> OnChunkGenerated;
-    
+
     private int distanceThreshold = 1;
     public HashSet<Vector2Int> currentChunks = new HashSet<Vector2Int>();
 
@@ -89,6 +90,7 @@ public class MapGeneration : MonoBehaviour
                 Mathf.Abs(chunkPosition.y - playerChunkPosition.y) > distanceThreshold)
             {
                 chunksToRemove.Add(chunkPosition);
+                natureTilemapManager.RemoveNatureTiles(chunkPosition);
             }
         }
 
@@ -113,6 +115,7 @@ public class MapGeneration : MonoBehaviour
 
         currentChunks.Remove(chunkPosition);
     }
+    
 
     void GenerateChunkIfNecessary(Vector2Int playerChunkPosition)
     {
@@ -124,11 +127,21 @@ public class MapGeneration : MonoBehaviour
                     (playerChunkPosition.x + dx),
                     (playerChunkPosition.y + dy)
                 );
+                
 
                 if (!currentChunks.Contains(chunkPosition))
                 {
                     currentChunks.Add(chunkPosition);
                     GenerateChunk(chunkPosition.x * chunkSize, chunkPosition.y * chunkSize, chunkSize, chunkSize);
+                    natureTilemapManager.GenerateNatureTiles(chunkPosition, chunkSize);
+                    if (natureTilemapManager.getSavedNatureChunks().ContainsKey(chunkPosition))
+                    {
+                        natureTilemapManager.RestoreNatureTiles(chunkPosition);
+                    }
+                    else
+                    {
+                        natureTilemapManager.GenerateNatureTiles(chunkPosition, chunkSize);
+                    }
                 }
             }
         }
@@ -136,6 +149,7 @@ public class MapGeneration : MonoBehaviour
 
     void GenerateChunk(int startX, int startY, int chunkWidth, int chunkHeight)
     {
+        
         Dictionary<Vector2Int, Tile> tileDictionary = new Dictionary<Vector2Int, Tile>();
         Dictionary<Vector2Int, Tile> borderTiles = new Dictionary<Vector2Int, Tile>();
         for (int x = startX; x < startX + chunkWidth; x++)
