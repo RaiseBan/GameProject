@@ -1,21 +1,39 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class NatureTilemapManager : MonoBehaviour
 {
+    public GameObject treeParent; // GameObject для хранения всех деревьев
+    public GameObject stoneParent;
+    public List<GameObject> treesPrefabs;
+    public List<GameObject> stonesPrefabs;
     public Tilemap mainTilemap;
     public List<Tile> waterTiles;
     public GameObject treePrefab; // Префаб вашего дерева
     public Dictionary<Vector2Int, List<GameObject>> savedNatureTrees = 
         new Dictionary<Vector2Int, List<GameObject>>(); // Словарь для хранения сгенерированных деревьев
+    public GameObject stonePrefab; // Префаб вашего камня
+    public Dictionary<Vector2Int, List<GameObject>> savedNatureStones =
+        new Dictionary<Vector2Int, List<GameObject>>(); // Словарь для хранения сгенерированных камней
 
+    public Dictionary<Vector2Int, List<GameObject>> getSavedNatureRocks()
+    {
+        return savedNatureStones;
+    }
     public Dictionary<Vector2Int, List<GameObject>> getSavedNatureTrees()
     {
         return savedNatureTrees;
     }
     
+    void Start()
+    {
+        stoneParent = new GameObject("Stones");
+        treeParent = new GameObject("Trees"); // Создаем новый GameObject с именем "Trees"
+    }
     private bool IsWaterTile(Vector2Int position)
     {
         Tile tile = mainTilemap.GetTile<Tile>(new Vector3Int(position.x, position.y, 0));
@@ -45,8 +63,9 @@ public class NatureTilemapManager : MonoBehaviour
 
     
 
-    public void GenerateNatureTrees(Vector2Int chunkPosition, int chunkSize)
+    public void GenerateNatureObjects(Vector2Int chunkPosition, int chunkSize)
     {
+        // Debug.Log("GenerateNatureObjects called for chunk: " + chunkPosition);
         if (savedNatureTrees.ContainsKey(chunkPosition))
         {
             return;
@@ -54,12 +73,13 @@ public class NatureTilemapManager : MonoBehaviour
 
         List<GameObject> newTrees = new List<GameObject>();
         HashSet<Vector2Int> generatedPositions = new HashSet<Vector2Int>();
-        int numTrees = Random.Range(5, 15);
+        int numTrees = Random.Range(5, 10);
         int startX = chunkPosition.x * chunkSize;
         int startY = chunkPosition.y * chunkSize;
         int endX = startX + chunkSize;
         int endY = startY + chunkSize;
         int minDistance = 15;
+        int rockDistance = 10;
 
         for (int i = 0; i < numTrees; i++)
         {
@@ -72,11 +92,50 @@ public class NatureTilemapManager : MonoBehaviour
 
             generatedPositions.Add(pos);
 
-            GameObject treeInstance = Instantiate(treePrefab, new Vector3(pos.x + 0.5f, pos.y + 0.5f, 0), Quaternion.identity);
+            GameObject treeInstance = Instantiate(GetRandomPrefab("tree"), new Vector3(pos.x + 0.5f, pos.y + 0.5f, 0), Quaternion.identity);
+            treeInstance.transform.SetParent(treeParent.transform); // Установить treeParent в качестве родителя
             newTrees.Add(treeInstance);
         }
 
         savedNatureTrees.Add(chunkPosition, newTrees);
+        
+        List<GameObject> newStones = new List<GameObject>();
+        int numStones = Random.Range(3, 10); // Выберите количество камней в зависимости от вашего дизайна уровня
+        // Debug.Log("after ");
+        for (int i = 0; i < numStones; i++)
+        {
+            Vector2Int pos = GetRandomNatureTilePosition(startX, endX, startY, endY, generatedPositions, rockDistance);
+
+            if (pos == new Vector2Int(-1, -1))
+            {
+                continue;
+            }
+
+            generatedPositions.Add(pos);
+
+            GameObject stoneInstance = Instantiate(GetRandomPrefab("stone"), new Vector3(pos.x + 0.5f, pos.y + 0.5f, 0), Quaternion.identity);
+            stoneInstance.transform.SetParent(stoneParent.transform);
+            newStones.Add(stoneInstance);
+            // Debug.Log("generated");
+        }
+
+        savedNatureStones.Add(chunkPosition, newStones);
+    }
+
+    public GameObject GetRandomPrefab(String type)
+    {
+        if (type == "tree")
+        {
+            int num = Random.Range(0, treesPrefabs.Count);
+            return treesPrefabs[num];
+        }
+        if (type == "stone")
+        {
+            int num = Random.Range(0, stonesPrefabs.Count);
+            return stonesPrefabs[num];
+        }
+
+        return null;
     }
 
     public void RestoreNatureTrees(Vector2Int chunkPosition)
@@ -141,5 +200,25 @@ public class NatureTilemapManager : MonoBehaviour
             }
         }
         return false;
+    }
+    public void RestoreNatureStones(Vector2Int chunkPosition)
+    {
+        if (savedNatureStones.ContainsKey(chunkPosition))
+        {
+            foreach (var stone in savedNatureStones[chunkPosition])
+            {
+                stone.SetActive(true);
+            }
+        }
+    }
+    public void RemoveNatureStones(Vector2Int chunkPosition)
+    {
+        if (savedNatureStones.ContainsKey(chunkPosition))
+        {
+            foreach (var stone in savedNatureStones[chunkPosition])
+            {
+                stone.SetActive(false);
+            }
+        }
     }
 }

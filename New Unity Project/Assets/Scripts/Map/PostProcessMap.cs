@@ -56,10 +56,11 @@ public class PostProcessMap : MonoBehaviour
         {
             for (int y = startY; y <= endY; y++)
             {
-                List<Tile> tiles = GetTileAndBorderTiles(x, y, localTileDict);
+                List<Tile> tiles = new List<Tile>();
+
+                tiles = GetTileAndBorderTiles(x, y, localBorderTiles);
+                TransformTile(tiles, x, y);
                 
-                    tiles = GetTileAndBorderTiles(x, y, localBorderTiles);
-                    TransformTile(tiles, x, y);
             
             }
         }
@@ -272,7 +273,7 @@ public class PostProcessMap : MonoBehaviour
     {
 
         // left-right
-        tileMap.SetTile(new Vector3Int(x, y, 0), postWaterTiles[13]);
+        tileMap.SetTile(new Vector3Int(x, y, 0), postWaterTiles[12]);
     }
 
 

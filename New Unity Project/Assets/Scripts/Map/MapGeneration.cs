@@ -11,6 +11,7 @@ public class MapGeneration : MonoBehaviour
     public Tilemap tilemap; // <-- Добавлен Tilemap
     public Tile[] tiles; // <-- Массив тайлов
     public event Action<Vector2Int, Dictionary<Vector2Int, Tile>, Dictionary<Vector2Int, Tile>> OnChunkGenerated;
+    public event Action<Vector2Int, Dictionary<Vector2Int, Tile>, Dictionary<Vector2Int, Tile>> OnGrassNeeded;
 
     private int distanceThreshold = 1;
     public HashSet<Vector2Int> currentChunks = new HashSet<Vector2Int>();
@@ -20,41 +21,33 @@ public class MapGeneration : MonoBehaviour
     float magnification = 15.0f;
     int x_offset = 23325;
     int y_offset = 23325;
-    
 
-    // void Awake()
-    // {
-    //     GenerateMap();
-    // }
-    //
-    // void GenerateMap()
-    // {
-    //     BoundsInt bounds = tilemap.cellBounds;
-    //     // TileBase[] allTiles = tilemap.GetTilesBlock(bounds);
-    //     
-    //     for (int x = 0; x <= bounds.size.x; x++)
-    //     {
-    //         for (int y = 0; y <= bounds.size.y; y++)
-    //         {
-    //             Vector3Int tilePosition = new Vector3Int(x, y, 0);
-    //             int tile_id = GetTileIdUsingPerlin(x, y);
-    //             tilemap.SetTile(tilePosition, tiles[tile_id]); // <-- Задаем тайл
-    //         }
-    //     }
-    // }
-
-    int GetTileIdUsingPerlin(int x, int y)
-    {
+    int GetTileIdUsingPerlin(int x, int y) {
         float raw_perlin = Mathf.PerlinNoise(
             (x - x_offset) / magnification,
             (y - y_offset) / magnification
         );
 
         float clamp_perlin = Mathf.Clamp01(raw_perlin);
-        
-        if (clamp_perlin < 0.2f) return 0;
-        if (clamp_perlin < 1f) return 1;
-        return 1;
+    
+        if (clamp_perlin < 0.2f) return 0;  // Вода
+    
+        float grassNoise = GenerateGrassNoise(x, y);
+
+        // Если шум травы показывает, что здесь должна быть трава, и значение clamp_perlin далеко от границы воды...
+        if (grassNoise > 0.5f && clamp_perlin > 0.3f) {  // Здесь 0.3 - это допустимое значение, далекое от границы воды (0.2). Вы можете экспериментировать с этим значением для получения желаемого результата.
+            return 2;  // ID для травы
+        }
+
+        return 1;  // Земля
+    }
+    float GenerateGrassNoise(int x, int y) {
+        // Используем другие параметры для масштабирования, чтобы разнообразить шум
+        float grassNoise = Mathf.PerlinNoise(
+            (x - x_offset) / (magnification * 0.5f),
+            (y - y_offset) / (magnification * 0.5f)
+        );
+        return grassNoise;
     }
     public void LoadTiles()
     {
@@ -91,6 +84,7 @@ public class MapGeneration : MonoBehaviour
             {
                 chunksToRemove.Add(chunkPosition);
                 natureTilemapManager.RemoveNatureTrees(chunkPosition);
+                natureTilemapManager.RemoveNatureStones(chunkPosition);
             }
         }
 
@@ -133,14 +127,16 @@ public class MapGeneration : MonoBehaviour
                 {
                     currentChunks.Add(chunkPosition);
                     GenerateChunk(chunkPosition.x * chunkSize, chunkPosition.y * chunkSize, chunkSize, chunkSize);
-                    natureTilemapManager.GenerateNatureTrees(chunkPosition, chunkSize);
-                    if (natureTilemapManager.getSavedNatureTrees().ContainsKey(chunkPosition))
+                    natureTilemapManager.GenerateNatureObjects(chunkPosition, chunkSize);
+                    
+                    if (natureTilemapManager.getSavedNatureTrees().ContainsKey(chunkPosition) || natureTilemapManager.getSavedNatureRocks().ContainsKey(chunkPosition))
                     {
                         natureTilemapManager.RestoreNatureTrees(chunkPosition);
+                        natureTilemapManager.RestoreNatureStones(chunkPosition);
                     }
                     else
                     {
-                        natureTilemapManager.GenerateNatureTrees(chunkPosition, chunkSize);
+                        natureTilemapManager.GenerateNatureObjects(chunkPosition, chunkSize);
                     }
                 }
             }
@@ -176,6 +172,7 @@ public class MapGeneration : MonoBehaviour
         }
 
         OnChunkGenerated?.Invoke(new Vector2Int(startX, startY), tileDictionary, borderTiles);
+        OnGrassNeeded?.Invoke(new Vector2Int(startX, startY), tileDictionary, borderTiles);
     }
 
  

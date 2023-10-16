@@ -457,6 +457,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9cfe77cdab79d419e118abd4b8933d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treeParent: {fileID: 0}
+  stoneParent: {fileID: 0}
+  treesPrefabs:
+  - {fileID: 2054496149281686643, guid: 0bf5a179505a0a64cab37bc5280f531b, type: 3}
+  - {fileID: 3302949882862180082, guid: 260e2b8e9d04cd344bdcb3c59a56ed70, type: 3}
+  stonesPrefabs:
+  - {fileID: 954466336975914490, guid: cd9f14e688ec86f439f62528dc36ce74, type: 3}
+  - {fileID: 6525517042513145804, guid: d9f43f9ae754e7d4894d6eccdb73bd2d, type: 3}
   mainTilemap: {fileID: 1412830101}
   waterTiles:
   - {fileID: 11400000, guid: 60de3087d5c22ee498c5356cd2caa86e, type: 2}
@@ -508,6 +516,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 28224e89d06773e4d92835f8c66cb747, type: 2}
   - {fileID: 11400000, guid: ef0976bc0871c0746afa798490d82f57, type: 2}
   treePrefab: {fileID: 3302949882862180082, guid: 260e2b8e9d04cd344bdcb3c59a56ed70, type: 3}
+  stonePrefab: {fileID: 6525517042513145804, guid: d9f43f9ae754e7d4894d6eccdb73bd2d, type: 3}
 --- !u!1001 &888222510
 PrefabInstance:
   m_ObjectHideFlags: 0
