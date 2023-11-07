@@ -12,11 +12,12 @@ public class QuickslotInventory : MonoBehaviour
     public int currentQuickslotID = 0;
     public Sprite selectedSprite;
     public Sprite notSelectedSprite;
-    public Text healthText;
-
+    public ItemData currentItem;
+    public IUserItem use = new UsageOfItem();
     // Update is called once per frame
     void Update()
     {
+        
         float mw = Input.GetAxis("Mouse ScrollWheel");
         // Используем колесико мышки
         if (mw > 0.1)
@@ -89,12 +90,14 @@ public class QuickslotInventory : MonoBehaviour
         {
             if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item != null)
             {
-                if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item.isConsumeable && !inventoryVisual.isOpened && quickslotParent.GetChild(currentQuickslotID).GetComponent<Image>().sprite == selectedSprite)
+                if (!inventoryVisual.isOpened && quickslotParent.GetChild(currentQuickslotID).GetComponent<Image>().sprite == selectedSprite)
                 {
+                    currentItem = quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().item;
                     // Применяем изменения к здоровью (будущем к голоду и жажде) 
-
+                    use.Usage(currentItem);
                     if (quickslotParent.GetChild(currentQuickslotID).GetComponent<InventorySlot>().amount <= 1)
                     {
+                        
                         quickslotParent.GetChild(currentQuickslotID).GetComponentInChildren<DragAndDropItem>().NullifySlotData();
                     }
                     else
@@ -106,6 +109,4 @@ public class QuickslotInventory : MonoBehaviour
             }
         }
     }
-
-    
 }

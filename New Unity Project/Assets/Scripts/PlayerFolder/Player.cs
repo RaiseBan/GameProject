@@ -6,22 +6,36 @@ using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
-    public Tilemap objectTilemap;
-    public Tile newTile;
+    public IUserItem userItem;
+    public float HP;
+    public float Satiety;
+    public QuickslotInventory quickslotInventory;
+    // public Tilemap objectTilemap;
+    // public Tile newTile;
     public float speed = 2f;
     public InventoryVisual inventory;
+    
+    private List<Item> placeableItems; // TODO: Сюда надо прикрутить предметы из инветоря, которые можно будет ставить на карту
+    
+    private void Start()
+    {
+        HP = 80f;
+        Debug.Log("HP "+ HP);
+        userItem = new UsageOfItem();
+    }
+    
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Получаем позицию мыши в мировых координатах
-            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // Преобразуем мировые координаты в координаты сетки Tilemap
-            Vector3Int tilePosition = objectTilemap.WorldToCell(mouseWorldPos);
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     // Получаем позицию мыши в мировых координатах
+        //     Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //     // Преобразуем мировые координаты в координаты сетки Tilemap
+        //     Vector3Int tilePosition = objectTilemap.WorldToCell(mouseWorldPos);
 
-            // Устанавливаем новый тайл на Tilemap
-            PlaceTile(newTile, tilePosition);
-        }
+        //     // Устанавливаем новый тайл на Tilemap
+        //     // PlaceTile(tilePosition);
+        // }
         
         
         if (Input.GetKey(KeyCode.W))
@@ -64,8 +78,24 @@ public class Player : MonoBehaviour
         }
 
     }
-    private void PlaceTile(Tile tile, Vector3Int position)
-    {
-        objectTilemap.SetTile(position, tile);
-    }
+
+    // private Item getCurrentItem()
+    // {
+    //     return new (); // TODO: здесь надо возвращать выбранный предмет сейчас (я не знаю, у тебя это как тайл или как префаб)
+    // }
+    
+    // private void PlaceTile(Vector3Int position)
+    // {
+    //     // вызываем метод для получения текущего предмета в инветоре
+    //     // делаем проверку можно ли поставить этот предмет на карту. P.S. Это можно сделать с помощью классов. То есть будет 2 класса: Placeable, NotPlaceable
+    //     // соответственно делаем проверку классов. И понимаем можно ли поставить этот предмет или нет.
+    //     ItemData itemData = quickslotInventory.getQuickItem();
+    //     userItem.Usage();
+    //     if (itemData.placeable)
+    //     {
+    //         // objectTilemap.SetTile(position, ); // Ставим на Tilemap новый тайл/префаб (tile - то, что ставим; postition - куда ставим) ВСЕ ЛОГИЧНО)
+    //     }
+        
+        
+    // }
 }

@@ -9,8 +9,13 @@ public class NatureTilemapManager : MonoBehaviour
 {
     public GameObject treeParent; // GameObject для хранения всех деревьев
     public GameObject stoneParent;
-    public List<GameObject> treesPrefabs;
     public List<GameObject> stonesPrefabs;
+    public List<GameObject> cuprumPrefabs;
+    public List<GameObject> ironPrefabs;
+    public List<GameObject> coalPrefabs;
+    public List<List<GameObject>> minerals;
+    public List<GameObject> treesPrefabs;
+    
     public Tilemap mainTilemap;
     public List<Tile> waterTiles;
     public GameObject treePrefab; // Префаб вашего дерева
@@ -33,6 +38,12 @@ public class NatureTilemapManager : MonoBehaviour
     {
         stoneParent = new GameObject("Stones");
         treeParent = new GameObject("Trees"); // Создаем новый GameObject с именем "Trees"
+        // minerals.Add(stonesPrefabs);
+        // minerals.Add(stonesPrefabs);
+        // minerals.Add(stonesPrefabs);
+        // minerals.Add(stonesPrefabs);
+        //TODO: ^^^^^
+        
     }
     private bool IsWaterTile(Vector2Int position)
     {
@@ -131,7 +142,10 @@ public class NatureTilemapManager : MonoBehaviour
         }
         if (type == "stone")
         {
-            int num = Random.Range(0, stonesPrefabs.Count);
+            //TODO: Сделать рандом
+            int rockNumber = randomNinerals.GetRandomStoneType(); // TODO: взависимости от местности, уровня или других зарактеристик будет передавать какой-то коэффициент
+            List<GameObject> currentMineral = minerals[rockNumber];
+            int num = Random.Range(0, currentMineral.Count);
             return stonesPrefabs[num];
         }
 

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public enum ItemType{Default,Food,Weapon,Tool}
+public enum ItemType{Default,Food,Weapon,Tool, Block}
 
 public class ItemData : ScriptableObject
 {
@@ -12,10 +13,17 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     public int maxAmount;
     public string itemDescription;
-    public bool isConsumeable;
+    //public bool isConsumeable;
+    
+    
 
     [Header("Consumable Characteristics")]
     public float changeHealth;
     public float changeHunger;
-    public float changeThirst;
+
+
+    // public bool isPlaceable()
+    // {
+    //     return placeable;
+    // }
 }
