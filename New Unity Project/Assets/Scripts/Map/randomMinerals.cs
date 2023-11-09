@@ -6,6 +6,7 @@ public class randomNinerals
     private static int baseWeightType2 = 30; // Базовый шанс для типа 2
     private static int baseWeightType3 = 15; // Базовый шанс для типа 3
     private static int baseWeightType4 = 5;  // Базовый шанс для типа 4
+    private static int hello = 1;
 
     // Коэффициент модификации
     private static float coefficient = 1.0f; 
