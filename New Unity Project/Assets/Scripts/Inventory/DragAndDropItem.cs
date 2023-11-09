@@ -133,6 +133,8 @@ public class DragAndDropItem : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         oldSlot.iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 0);
         oldSlot.iconGO.GetComponent<Image>().sprite = null;
         oldSlot.itemAmountText.text = "";
+        Debug.Log("nulify v drag");
+        
     }
     void ExchangeSlotData(InventorySlot newSlot)
     {

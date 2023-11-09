@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 public interface IUserItem
 {
-    public void Usage<T>(T _item) where T : ItemData;
+    public void Usage();
     
 }
