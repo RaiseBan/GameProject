@@ -9,7 +9,6 @@ public class InventoryVisual : MonoBehaviour
 	public List<InventorySlot> slots = new List<InventorySlot>();
     public bool isOpened = false;
     public Transform quickslotPanel;
-    public GameObject Player;
     public bool canTake;
     public int cantTake;
 

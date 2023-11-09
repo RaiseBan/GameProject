@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66c0c7b52e233046a43d75a851828cf, type: 3}
+  m_Name: Sand
+  m_EditorClassIdentifier: 
+  itemType: 4
+  itemName: Sand
+  itemPrefab: {fileID: 1202110168593424517, guid: eb045ee724b537d47a1e44de90050253, type: 3}
+  icon: {fileID: 1548792733, guid: 2bdfee4249c23694a83539494eea40f5, type: 3}
+  maxAmount: 10
+  itemDescription: 
+  changeHealth: 0
+  changeHunger: 0
+  tile: {fileID: 11400000, guid: 147b8b10b385cef4abab89e7791e20e1, type: 2}
+  Health: 100
