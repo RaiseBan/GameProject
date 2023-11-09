@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e66c0c7b52e233046a43d75a851828cf, type: 3}
-  m_Name: Block Item
+  m_Name: Sand
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: 
-  itemPrefab: {fileID: 0}
-  icon: {fileID: 0}
-  maxAmount: 0
+  itemType: 4
+  itemName: Sand
+  itemPrefab: {fileID: 1202110168593424517, guid: eb045ee724b537d47a1e44de90050253, type: 3}
+  icon: {fileID: 1548792733, guid: 2bdfee4249c23694a83539494eea40f5, type: 3}
+  maxAmount: 10
   itemDescription: 
   changeHealth: 0
   changeHunger: 0
-  changeThirst: 0
-  tile: {fileID: 0}
+  tile: {fileID: 11400000, guid: 147b8b10b385cef4abab89e7791e20e1, type: 2}
+  Health: 100

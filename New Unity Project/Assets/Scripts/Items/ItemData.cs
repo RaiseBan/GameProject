@@ -21,7 +21,8 @@ public class ItemData : ScriptableObject
     public float changeHealth;
     public float changeHunger;
 
-
+    [Header("Tile")]
+    public Tile tile;
     // public bool isPlaceable()
     // {
     //     return placeable;

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Slot
   - Tilemap
+  - Inventory
+  - QuickSlots
   layers:
   - Default
   - TransparentFX

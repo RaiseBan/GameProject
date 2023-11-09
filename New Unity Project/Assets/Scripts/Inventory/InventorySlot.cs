@@ -11,9 +11,7 @@ public class InventorySlot : MonoBehaviour
     public int amount;
     public bool isEmpty = true;
     public GameObject iconGO;
-    public GameObject storedItem;
     public TMP_Text itemAmountText;
-    public GameObject itemGameObject;
     public float itemDurability;
     [SerializeField] private Image _durabilityBar;
 

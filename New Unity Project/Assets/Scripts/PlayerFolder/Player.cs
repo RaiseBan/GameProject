@@ -6,28 +6,23 @@ using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
-    public IUserItem userItem;
     public float HP;
     public float Satiety;
-    public QuickslotInventory quickslotInventory;
     // public Tilemap objectTilemap;
     // public Tile newTile;
     public float speed = 2f;
     public InventoryVisual inventory;
     
-    private List<Item> placeableItems; // TODO: Сюда надо прикрутить предметы из инветоря, которые можно будет ставить на карту
-    
     private void Start()
     {
         HP = 80f;
         Debug.Log("HP "+ HP);
-        userItem = new UsageOfItem();
     }
     
     private void Update()
     {
-        // if (Input.GetMouseButtonDown(0))
-        // {
+        if (Input.GetMouseButtonDown(0))
+        {
         //     // Получаем позицию мыши в мировых координатах
         //     Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //     // Преобразуем мировые координаты в координаты сетки Tilemap
@@ -35,7 +30,7 @@ public class Player : MonoBehaviour
 
         //     // Устанавливаем новый тайл на Tilemap
         //     // PlaceTile(tilePosition);
-        // }
+        }
         
         
         if (Input.GetKey(KeyCode.W))
