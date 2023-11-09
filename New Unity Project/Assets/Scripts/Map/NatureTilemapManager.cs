@@ -13,7 +13,7 @@ public class NatureTilemapManager : MonoBehaviour
     public List<GameObject> cuprumPrefabs;
     public List<GameObject> ironPrefabs;
     public List<GameObject> coalPrefabs;
-    public List<List<GameObject>> minerals;
+    private List<List<GameObject>> minerals = new List<List<GameObject>>();
     public List<GameObject> treesPrefabs;
     
     public Tilemap mainTilemap;
@@ -38,11 +38,12 @@ public class NatureTilemapManager : MonoBehaviour
     {
         stoneParent = new GameObject("Stones");
         treeParent = new GameObject("Trees"); // Создаем новый GameObject с именем "Trees"
-        // minerals.Add(stonesPrefabs);
-        // minerals.Add(stonesPrefabs);
-        // minerals.Add(stonesPrefabs);
-        // minerals.Add(stonesPrefabs);
-        //TODO: ^^^^^
+        Debug.Log("before");
+        minerals.Add(stonesPrefabs);
+        Debug.Log("after");
+        minerals.Add(coalPrefabs);
+        minerals.Add(cuprumPrefabs);
+        minerals.Add(ironPrefabs);
         
     }
     private bool IsWaterTile(Vector2Int position)
@@ -144,9 +145,13 @@ public class NatureTilemapManager : MonoBehaviour
         {
             //TODO: Сделать рандом
             int rockNumber = randomNinerals.GetRandomStoneType(); // TODO: взависимости от местности, уровня или других зарактеристик будет передавать какой-то коэффициент
+            // Debug.Log(minerals[rockNumber].ToString());
+            Debug.Log("RockNum: " + rockNumber);
+            Debug.Log("LENGHT: " + minerals.Count);
             List<GameObject> currentMineral = minerals[rockNumber];
+            Debug.Log("CurrentLength: " + currentMineral.Count);
             int num = Random.Range(0, currentMineral.Count);
-            return stonesPrefabs[num];
+            return currentMineral[num];
         }
 
         return null;
@@ -219,6 +224,7 @@ public class NatureTilemapManager : MonoBehaviour
     {
         if (savedNatureStones.ContainsKey(chunkPosition))
         {
+            
             foreach (var stone in savedNatureStones[chunkPosition])
             {
                 stone.SetActive(true);

@@ -14,48 +14,55 @@ public class Player : MonoBehaviour
     // public Tile newTile;
     public float speed = 2f;
     public InventoryVisual inventory;
+    private Rigidbody2D rb;
     
     private List<Item> placeableItems; // TODO: Сюда надо прикрутить предметы из инветоря, которые можно будет ставить на карту
-    
+
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D component not found on the player!");
+        }
+    }
+
     private void Start()
     {
+        
+        Debug.Log(rb);
         HP = 80f;
         Debug.Log("HP "+ HP);
         userItem = new UsageOfItem();
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     // Получаем позицию мыши в мировых координатах
-        //     Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //     // Преобразуем мировые координаты в координаты сетки Tilemap
-        //     Vector3Int tilePosition = objectTilemap.WorldToCell(mouseWorldPos);
+        Vector2 movement = new Vector2(0, 0);
 
-        //     // Устанавливаем новый тайл на Tilemap
-        //     // PlaceTile(tilePosition);
-        // }
-        
-        
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(transform.up * this.speed * Time.deltaTime);
+            movement += Vector2.up;
         }
-
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(transform.right * this.speed * Time.deltaTime * (-1));
+            movement += Vector2.left;
         }
-
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(transform.up * this.speed * Time.deltaTime * (-1));
+            movement += Vector2.down;
         }
-
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(transform.right * this.speed * Time.deltaTime);
+            movement += Vector2.right;
+        }
+
+        movement.Normalize(); // Это предотвратит более быстрое движение по диагонали.
+
+        if (movement != Vector2.zero)
+        {
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)

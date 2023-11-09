@@ -79,13 +79,22 @@ public class MapGeneration : MonoBehaviour
         List<Vector2Int> chunksToRemove = new List<Vector2Int>();
         foreach (Vector2Int chunkPosition in currentChunks)
         {
-            if (Mathf.Abs(chunkPosition.x - playerChunkPosition.x) > distanceThreshold ||
-                Mathf.Abs(chunkPosition.y - playerChunkPosition.y) > distanceThreshold)
+            try
             {
-                chunksToRemove.Add(chunkPosition);
-                natureTilemapManager.RemoveNatureTrees(chunkPosition);
-                natureTilemapManager.RemoveNatureStones(chunkPosition);
+                if (Mathf.Abs(chunkPosition.x - playerChunkPosition.x) > distanceThreshold ||
+                    Mathf.Abs(chunkPosition.y - playerChunkPosition.y) > distanceThreshold)
+                {
+                    chunksToRemove.Add(chunkPosition);
+                    natureTilemapManager.RemoveNatureTrees(chunkPosition);
+                    natureTilemapManager.RemoveNatureStones(chunkPosition);
+                }
             }
+            catch (Exception e)
+            {
+                Debug.Log("NotFoundPrefab");
+                continue;
+            }
+            
         }
 
         foreach (Vector2Int chunkPosition in chunksToRemove)
@@ -113,31 +122,41 @@ public class MapGeneration : MonoBehaviour
 
     void GenerateChunkIfNecessary(Vector2Int playerChunkPosition)
     {
+        
         for (int dx = -distanceThreshold; dx <= distanceThreshold; dx++)
         {
             for (int dy = -distanceThreshold; dy <= distanceThreshold; dy++)
             {
-                Vector2Int chunkPosition = new Vector2Int(
-                    (playerChunkPosition.x + dx),
-                    (playerChunkPosition.y + dy)
-                );
-                
-
-                if (!currentChunks.Contains(chunkPosition))
+                try
                 {
-                    currentChunks.Add(chunkPosition);
-                    GenerateChunk(chunkPosition.x * chunkSize, chunkPosition.y * chunkSize, chunkSize, chunkSize);
-                    natureTilemapManager.GenerateNatureObjects(chunkPosition, chunkSize);
-                    
-                    if (natureTilemapManager.getSavedNatureTrees().ContainsKey(chunkPosition) || natureTilemapManager.getSavedNatureRocks().ContainsKey(chunkPosition))
+                    Vector2Int chunkPosition = new Vector2Int(
+                        (playerChunkPosition.x + dx),
+                        (playerChunkPosition.y + dy)
+                    );
+
+
+                    if (!currentChunks.Contains(chunkPosition))
                     {
-                        natureTilemapManager.RestoreNatureTrees(chunkPosition);
-                        natureTilemapManager.RestoreNatureStones(chunkPosition);
-                    }
-                    else
-                    {
+                        currentChunks.Add(chunkPosition);
+                        GenerateChunk(chunkPosition.x * chunkSize, chunkPosition.y * chunkSize, chunkSize, chunkSize);
                         natureTilemapManager.GenerateNatureObjects(chunkPosition, chunkSize);
+
+                        if (natureTilemapManager.getSavedNatureTrees().ContainsKey(chunkPosition) ||
+                            natureTilemapManager.getSavedNatureRocks().ContainsKey(chunkPosition))
+                        {
+                            natureTilemapManager.RestoreNatureTrees(chunkPosition);
+                            natureTilemapManager.RestoreNatureStones(chunkPosition);
+                        }
+                        else
+                        {
+                            natureTilemapManager.GenerateNatureObjects(chunkPosition, chunkSize);
+                        }
                     }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    continue;
                 }
             }
         }

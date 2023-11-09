@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  smoothTime: 0.3
 --- !u!1 &811483092
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +389,54 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b4952609b1dab2408bc223793ae1e17, type: 2}
   - {fileID: 11400000, guid: 4016bced5c19ed04ca77476bac24dd5e, type: 2}
   - {fileID: 11400000, guid: 28224e89d06773e4d92835f8c66cb747, type: 2}
+  postGrassTiles:
+  - {fileID: 11400000, guid: a62b03446a925be4da9077da4c0cbcba, type: 2}
+  - {fileID: 11400000, guid: a866596e34b0d9a4c96d55bc2d85f394, type: 2}
+  - {fileID: 11400000, guid: 0a5e16f810326294588b2f9a6134c15f, type: 2}
+  - {fileID: 11400000, guid: 7cc4949306ad3db49b6401b8e99df0ad, type: 2}
+  - {fileID: 11400000, guid: 8603cc45a055284438ddff64330009ff, type: 2}
+  - {fileID: 11400000, guid: 003de8164de4f7545a8f16790668c32b, type: 2}
+  - {fileID: 11400000, guid: a63de8c8d043a4e479daccd8909ecb0f, type: 2}
+  - {fileID: 11400000, guid: d66c1a0220223ef4f81f068c2182b566, type: 2}
+  - {fileID: 11400000, guid: b691a163bad85f045878b7a099e69825, type: 2}
+  - {fileID: 11400000, guid: 4115a1129c28b6441abe0a3ad736702a, type: 2}
+  - {fileID: 11400000, guid: bbfa5aa0478d8414fbfa9471597602c0, type: 2}
+  - {fileID: 11400000, guid: 82c5f9c06167ea840a81f79e8daf7057, type: 2}
+  - {fileID: 11400000, guid: 93df698562b00c84a8cda2d551edcef5, type: 2}
+  - {fileID: 11400000, guid: 6d4294cbca2e76148a8c8ce7be658790, type: 2}
+  - {fileID: 11400000, guid: 2e8da9c46a69be347b87fd8cd866728e, type: 2}
+  - {fileID: 11400000, guid: ba83a5f08d4c34e4380ef1b1af651ad0, type: 2}
+  - {fileID: 11400000, guid: 6896cfb1d22d446489e1be9513c7ec39, type: 2}
+  - {fileID: 11400000, guid: 0a65cbe5e23e6d449840b399e079775c, type: 2}
+  - {fileID: 11400000, guid: 489aaef9cd237e942bbda21ce6659899, type: 2}
+  - {fileID: 11400000, guid: e86946be6cb75a14cb2f2d9d6d2d9330, type: 2}
+  - {fileID: 11400000, guid: eb111b8d41240e7408195a2e40b33450, type: 2}
+  - {fileID: 11400000, guid: 7f13a76e955d3334a9bceae09e5cb9af, type: 2}
+  - {fileID: 11400000, guid: c287d826717c2104a870eaad63bdf933, type: 2}
+  - {fileID: 11400000, guid: 1025cbb734156e94caf55cca7670d6a1, type: 2}
+  - {fileID: 11400000, guid: 295cf113b633fe245b49429f0b9637b0, type: 2}
+  - {fileID: 11400000, guid: ed3c1faeb34459f408dee9e0d721d936, type: 2}
+  - {fileID: 11400000, guid: 2c82814151b97994e9d706bf8bb824df, type: 2}
+  - {fileID: 11400000, guid: 9cf180ee1d92d7e4d90af3f5129a2063, type: 2}
+  - {fileID: 11400000, guid: c2b22e31d5b27c843892b16ff3dc96ba, type: 2}
+  - {fileID: 11400000, guid: c3e24fbd57fb6ed4b802a2242eb516d7, type: 2}
+  - {fileID: 11400000, guid: 2735656aba7974246b2aec19255b55f6, type: 2}
+  - {fileID: 11400000, guid: d767963f85e86fe43a6ad9648876dff4, type: 2}
+  - {fileID: 11400000, guid: ec802a592922fb941994f27c2e5a6ee4, type: 2}
+  - {fileID: 11400000, guid: c598bcc6da17d8b4ca5ab54e6ad3b926, type: 2}
+  - {fileID: 11400000, guid: 81597b3f325cc844cb072b72f9a99692, type: 2}
+  - {fileID: 11400000, guid: c94f9bb498364a3439ced8e0e2eeba14, type: 2}
+  - {fileID: 11400000, guid: 2845515ba9a506b439a0cb5bec2ac63f, type: 2}
+  - {fileID: 11400000, guid: 057f62ad0481af549a346034bfe4608b, type: 2}
+  - {fileID: 11400000, guid: 1073841639e7e014196004cd6f56a562, type: 2}
+  - {fileID: 11400000, guid: 07290db39830bda44bf29ce4c898aa1c, type: 2}
+  - {fileID: 11400000, guid: c4fae894b0e718843adbbf74b7b4f8fc, type: 2}
+  - {fileID: 11400000, guid: 1d0cb4f45a7db7544a321d457abbe431, type: 2}
+  - {fileID: 11400000, guid: 196f0f08158a8d446ae0c0deeda327fa, type: 2}
+  - {fileID: 11400000, guid: 4376412c0d94bb24c9512c8782db4cd1, type: 2}
+  - {fileID: 11400000, guid: c73b4c411b7361a428a6061073a81005, type: 2}
+  - {fileID: 11400000, guid: 2705c9ce8797c9a4299a9f527ac94bd1, type: 2}
+  - {fileID: 11400000, guid: 2ee22f44b76c4ff4ea01d2e0d9e892b4, type: 2}
 --- !u!114 &811483098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,9 +454,12 @@ MonoBehaviour:
   stonesPrefabs:
   - {fileID: 954466336975914490, guid: cd9f14e688ec86f439f62528dc36ce74, type: 3}
   - {fileID: 6525517042513145804, guid: d9f43f9ae754e7d4894d6eccdb73bd2d, type: 3}
-  cuprumPrefabs: []
-  ironPrefabs: []
-  coalPrefabs: []
+  cuprumPrefabs:
+  - {fileID: 1910650102932739966, guid: ca2ed244459224b42b6f7ef680317e45, type: 3}
+  ironPrefabs:
+  - {fileID: 4055246375470393832, guid: b9d1fd36d2aee5943b754fe4e43fda9a, type: 3}
+  coalPrefabs:
+  - {fileID: 2621279769166718235, guid: 8a78876b828dc7c4d80d0db94aa32223, type: 3}
   treesPrefabs:
   - {fileID: 3499168993641131455, guid: 57d0b879052c7d64ba5cf72537a799b4, type: 3}
   mainTilemap: {fileID: 1412830101}
@@ -1006,11 +1058,11 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4

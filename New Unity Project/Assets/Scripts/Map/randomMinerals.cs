@@ -28,16 +28,20 @@ public class randomNinerals
         // Проверяем, в каком диапазоне лежит randomNumber
         if (randomNumber < (accumulatedWeight += weightType1))
         {
+            Debug.Log("STONE");
             return 0;
             // stone
         }
         else if (randomNumber < (accumulatedWeight += weightType2))
         {
+            Debug.Log("COAL");
             return 1;
+            
             //coal
         }
         else if (randomNumber < (accumulatedWeight += weightType3))
         {
+            Debug.Log("IRON");
             return 2;
             //iron
         }
