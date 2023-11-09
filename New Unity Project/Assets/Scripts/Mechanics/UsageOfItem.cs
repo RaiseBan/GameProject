@@ -18,22 +18,28 @@ public class UsageOfItem : MonoBehaviour
     private Tilemap tileMap;
     
     private Sprite selectedSprite;
-    void Start(){
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>(); 
-        tileMap = GameObject.FindGameObjectWithTag("Tilemap").GetComponent<Tilemap>();
-        quickslot = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<QuickslotInventory>();
-        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryVisual>();
-        transfInventory = GameObject.FindGameObjectWithTag("QuickSlots").transform;
-        selectedSprite = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<QuickslotInventory>().selectedSprite;
-    }
+    // void Start(){
+    //     _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>(); 
+    //     tileMap = GameObject.FindGameObjectWithTag("Tilemap").GetComponent<Tilemap>();
+    //     quickslot = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<QuickslotInventory>();
+    //     inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryVisual>();
+    //     transfInventory = GameObject.FindGameObjectWithTag("QuickSlots").transform;
+    //     selectedSprite = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<QuickslotInventory>().selectedSprite;
+    // }
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             _item = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<QuickslotInventory>().currentItem;
+            _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>(); 
+            tileMap = GameObject.FindGameObjectWithTag("Tilemap").GetComponent<Tilemap>();
+            quickslot = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<QuickslotInventory>();
+            inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryVisual>();
+            transfInventory = GameObject.FindGameObjectWithTag("QuickSlots").transform;
+            selectedSprite = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<QuickslotInventory>().selectedSprite;
             Debug.Log("najal");
-            Debug.Log(_item);
+            Debug.Log(inventory);
             if (_item != null)
             {
                 Debug.Log("proerka 1");

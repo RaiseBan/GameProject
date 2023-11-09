@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 1412830100}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,6 +925,7 @@ GameObject:
   - component: {fileID: 1440744868}
   - component: {fileID: 1440744867}
   - component: {fileID: 1440744866}
+  - component: {fileID: 1440744872}
   - component: {fileID: 1440744869}
   - component: {fileID: 1440744871}
   - component: {fileID: 1440744870}
@@ -1001,7 +1002,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 80
   Satiety: 80
-  quickslotInventory: {fileID: 0}
   speed: 20
   inventory: {fileID: 7445352689378650700}
 --- !u!4 &1440744868
@@ -1084,6 +1084,18 @@ MonoBehaviour:
   nightColor: {r: 0.72156864, g: 0.35037115, b: 0.25098044, a: 0}
   maxIntensity: 1
   minIntensity: 0
+--- !u!114 &1440744872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440744865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9daacd9676a1e4bba4f408d8ea00c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1507951754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,10 +1744,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
-    - target: {fileID: 4453699010979454492, guid: a8cb07a8fa41947498b4884604c8acca, type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1440744865}
     - target: {fileID: 4453699010979454493, guid: a8cb07a8fa41947498b4884604c8acca, type: 3}
       propertyPath: m_Pivot.x
       value: 0

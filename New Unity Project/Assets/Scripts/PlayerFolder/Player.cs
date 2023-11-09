@@ -6,12 +6,9 @@ using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
-    public IUserItem userItem;
+    
     public float HP;
     public float Satiety;
-    public QuickslotInventory quickslotInventory;
-    // public Tilemap objectTilemap;
-    // public Tile newTile;
     public float speed = 2f;
     public InventoryVisual inventory;
     private Rigidbody2D rb;
@@ -34,7 +31,7 @@ public class Player : MonoBehaviour
         Debug.Log(rb);
         HP = 80f;
         Debug.Log("HP "+ HP);
-        userItem = new UsageOfItem();
+        
     }
     
     private void FixedUpdate()
